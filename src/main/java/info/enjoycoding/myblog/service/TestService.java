@@ -3,9 +3,11 @@ package info.enjoycoding.myblog.service;
 import info.enjoycoding.myblog.mapper.TestMapper;
 import info.enjoycoding.myblog.model.TestModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TestService {
 
     private final TestMapper testDao;
