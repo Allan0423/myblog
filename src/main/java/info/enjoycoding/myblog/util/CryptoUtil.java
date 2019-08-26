@@ -22,7 +22,7 @@ public class CryptoUtil {
         digest.update(saltBytes, 0, saltBytes.length);
         digest.update(msgBytes, 0, msgBytes.length);
         digest.doFinal(out, 0);
-        
+
         return Base64.toBase64String(out);
     }
 

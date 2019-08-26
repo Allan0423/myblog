@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>登录后台</title>
-    <script type="text/javascript" th:src="@{/js/jquery/jquery-1.10.2.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/jquery/jquery-1.10.2.js}"></script>
     <STYLE>
         body{
             background: #ebebeb;
@@ -35,14 +35,14 @@
             box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
         }
         .u_logo{
-            background: url("/images/username.png") no-repeat;
+            background: url("/static/images/username.png") no-repeat;
             padding: 10px 10px;
             position: absolute;
             top: 43px;
             left: 40px;
         }
         .p_logo{
-            background: url("/images/password.png") no-repeat;
+            background: url("/static/images/password.png") no-repeat;
             padding: 10px 10px;
             position: absolute;
             top: 12px;
@@ -52,7 +52,7 @@
             text-decoration: none;
         }
         .tou{
-            background: url("/images/tou.png") no-repeat;
+            background: url("/static/images/tou.png") no-repeat;
             width: 97px;
             height: 92px;
             position: absolute;
@@ -60,7 +60,7 @@
             left: 140px;
         }
         .left_hand{
-            background: url("/images/left_hand.png") no-repeat;
+            background: url("/static/images/left_hand.png") no-repeat;
             width: 32px;
             height: 37px;
             position: absolute;
@@ -68,7 +68,7 @@
             left: 150px;
         }
         .right_hand{
-            background: url("/images/right_hand.png") no-repeat;
+            background: url("/static/images/right_hand.png") no-repeat;
             width: 32px;
             height: 37px;
             position: absolute;
@@ -76,7 +76,7 @@
             right: -64px;
         }
         .initial_left_hand{
-            background: url("/images/hand.png") no-repeat;
+            background: url("/static/images/hand.png") no-repeat;
             width: 30px;
             height: 20px;
             position: absolute;
@@ -84,7 +84,7 @@
             left: 100px;
         }
         .initial_right_hand{
-            background: url("/images/hand.png") no-repeat;
+            background: url("/static/images/hand.png") no-repeat;
             width: 30px;
             height: 20px;
             position: absolute;
@@ -142,7 +142,7 @@
     </script>
 </head>
 <body>
-<form action="/blogger/login" method="post" onsubmit="return checkForm()">
+<form th:action="@{/blogger/login}" th:object="${blogger}" method="post" onsubmit="return checkForm()">
     <div style="background: rgb(255, 255, 255); margin: 100px auto auto; border: 1px solid rgb(231, 231, 231); border-image: none; width: 400px; height: 200px; text-align: center;">
         <div style="width: 165px; height: 96px; position: absolute;">
             <div class="tou">
@@ -154,11 +154,11 @@
         </div>
         <p style="padding: 30px 0px 10px; position: relative;">
             <span class="u_logo"></span>
-            <input id="name" name="name" class="ipt" type="text" placeholder="请输入用户名" value="">
+            <input id="name" class="ipt" type="text" placeholder="请输入用户名" name="name" />
         </p>
         <p style="position: relative;">
             <SPAN class="p_logo"></SPAN>
-            <input id="password" name="password" class="ipt" type="password" placeholder="请输入密码" value="" onfocus=pwdInputOnFocus(); onblur=pwdInputOnBlur()>
+            <input id="password" class="ipt" type="password" placeholder="请输入密码" name="pwd" onfocus=pwdInputOnFocus(); onblur=pwdInputOnBlur() />
         </p>
         <div style="height: 50px; line-height: 50px; margin-top: 30px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
             <p style="margin: 0px 35px 20px 45px;">

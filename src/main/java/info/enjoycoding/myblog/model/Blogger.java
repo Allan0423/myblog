@@ -2,27 +2,27 @@ package info.enjoycoding.myblog.model;
 
 public class Blogger {
 
-    private String bloggerName;
-    private String bloggerPwd;
+    private String name;
+    private String pwd;
     private String email;
     private String profile;
     private String signature;
     private String profilePicName;
 
-    public String getBloggerName() {
-        return bloggerName;
+    public String getName() {
+        return name;
     }
 
-    public void setBloggerName(String bloggerName) {
-        this.bloggerName = bloggerName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getBloggerPwd() {
-        return bloggerPwd;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setBloggerPwd(String bloggerPwd) {
-        this.bloggerPwd = bloggerPwd;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public String getEmail() {
@@ -55,5 +55,17 @@ public class Blogger {
 
     public void setProfilePicName(String profilePicName) {
         this.profilePicName = profilePicName;
+    }
+
+    @Override
+    public String toString() {
+        return "Blogger{" +
+                "bloggerName='" + name + '\'' +
+                ", bloggerPwd='" + pwd + '\'' +
+                ", email='" + email + '\'' +
+                ", profile='" + profile + '\'' +
+                ", signature='" + signature + '\'' +
+                ", profilePicName='" + profilePicName + '\'' +
+                '}';
     }
 }
