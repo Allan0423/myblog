@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping("/blogger")
+@RequestMapping("/admin")
 public class BloggerController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BloggerController.class);
@@ -23,11 +23,11 @@ public class BloggerController {
     private IBloggerService bloggerService;
 
     private static final String ADMIN_MAIN = "redirect:/admin/main";
-    private static final String LOGIN = "/admin/login";
+    private static final String LOGIN = "/login";
 
     @GetMapping(value = "/login")
     public String login() {
-        return "/admin/login";
+        return "/login";
     }
 
     @RequestMapping("/login")
@@ -40,6 +40,11 @@ public class BloggerController {
         } else {
             return ADMIN_MAIN;
         }
+    }
+
+    @RequestMapping("/main")
+    public String adminMainPage(HttpServletRequest request){
+        return "/admin/main";
     }
 
 }
