@@ -15,9 +15,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
-public class BloggerController {
+public class AdminController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BloggerController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
 
     @Resource
     private IBloggerService bloggerService;
