@@ -36,14 +36,22 @@ public class AdminController {
         blogger.setPwd(CryptoUtil.getDigest(blogger.getPwd()));
         List<Blogger> bloggerInSystem = bloggerService.selectBlogger(blogger);
         if (bloggerInSystem.isEmpty()){
+            request.setAttribute("blogger", blogger);
+            request.setAttribute("errorInfo", "用户名或密码错误！");
             return LOGIN;
         } else {
+            request.setAttribute("blogger", blogger);
             return ADMIN_MAIN;
         }
     }
 
+    @RequestMapping("/writeBlog")
+    public String writeBlog(){
+        return  "/admin/writeBlog";
+    }
+
     @RequestMapping("/main")
-    public String adminMainPage(HttpServletRequest request){
+    public String adminMainPage(){
         return "/admin/main";
     }
 
