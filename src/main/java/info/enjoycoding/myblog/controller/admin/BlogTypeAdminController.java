@@ -4,7 +4,6 @@ import info.enjoycoding.myblog.model.BlogType;
 import info.enjoycoding.myblog.model.PageBean;
 import info.enjoycoding.myblog.service.IBlogTypeService;
 import info.enjoycoding.myblog.util.ResponseUtil;
-import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
