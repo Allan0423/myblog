@@ -24,6 +24,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compile 'org.xerial:sqlite-jdbc:3.21.0.1'
     compile 'org.bouncycastle:bcpkix-jdk15on:1.58'
+    compile 'net.sf.json-lib:json-lib:2.4:jdk15'
 }
 
 bootRun{
