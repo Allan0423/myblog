@@ -1,42 +1,47 @@
 package info.enjoycoding.myblog.service.impl;
 
+import info.enjoycoding.myblog.dao.BlogTypeDao;
 import info.enjoycoding.myblog.model.BlogType;
 import info.enjoycoding.myblog.service.IBlogTypeService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class BlogTypeServiceImpl implements IBlogTypeService {
 
+    @Resource
+    private BlogTypeDao blogTypeDao;
+
     @Override
     public List<BlogType> countAll() {
-        return null;
+        return blogTypeDao.countAll();
     }
 
     @Override
     public List<BlogType> list(Map<String, Object> map) {
-        return null;
+        return blogTypeDao.list(map);
     }
 
     @Override
     public Integer getCount(Map<String, Object> map) {
-        return null;
+        return blogTypeDao.getCount(map);
     }
 
     @Override
     public Integer add(BlogType blogType) {
-        return null;
+        return blogTypeDao.add(blogType);
     }
 
     @Override
     public Integer update(BlogType blogType) {
-        return null;
+        return blogTypeDao.update(blogType);
     }
 
     @Override
     public Integer delete(Integer id) {
-        return null;
+        return blogTypeDao.delete(id);
     }
 }
