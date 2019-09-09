@@ -45,14 +45,33 @@ public class AdminController {
         }
     }
 
-    @RequestMapping("/writeBlog")
-    public String writeBlog(){
-        return  "/admin/writeBlog";
-    }
-
     @RequestMapping("/main")
     public String adminMainPage(){
         return "/admin/main";
     }
 
+    @RequestMapping("/blogTypeMg")
+    public String blogTypeMg(){
+        return "/admin/blogTypeMg";
+    }
+
+    @RequestMapping("/writeBlog")
+    public String writeBlog(){
+        return  "/admin/writeBlog";
+    }
+
+    @RequestMapping("/blogMg")
+    public String blogMg(){
+        return "/admin/blogMg";
+    }
+
+    @RequestMapping("/modifyInfo")
+    public String modifyInfo(){
+        return "/admin/modifyInfo";
+    }
+
+    @RequestMapping("/linkMg")
+    public String linkMg(){
+        return "/admin/linkMg";
+    }
 }
