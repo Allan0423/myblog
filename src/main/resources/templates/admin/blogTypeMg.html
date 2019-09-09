@@ -34,7 +34,7 @@
                     return $(this).form("validate");
                 },
                 success:function(result){
-                    let saveResult=eval('('+result+')');
+                    let saveResult = eval('('+result+')');
                     if(saveResult.success){
                         $.messager.alert("系统提示","保存成功！");
                         resetValue();
