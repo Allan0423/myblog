@@ -19,10 +19,12 @@ public interface BlogTypeDao {
     List<BlogType> countAll();
 
 
-    @Select("SELECT * FROM tb_blogtype WHERE blogtype_id = #{blogTypeId}")
-    BlogType findById(Integer blogTypeId);
-
-
+    @Results({
+            @Result(property = "id", column = "blogtype_id"),
+            @Result(property = "name", column = "blogtype_name"),
+            @Result(property = "orderNo", column = "blogtype_orderno"),
+            @Result(property = "blogCount", column = "blogtype_blog_count")
+    })
     @Select("<script> SELECT * FROM tb_blogtype " +
             "<if test=\"#{map.start} != null\"> LIMIT #{map.start}, #{map.size}</if> </script>")
     List<BlogType> list(@Param("map") Map<String, Object> map);
@@ -32,11 +34,11 @@ public interface BlogTypeDao {
     Integer getCount(Map<String, Object> map);
 
 
-    @Insert("INSERT INTO tb_blogtype VALUES(null, #{name}, #{orderNo})")
+    @Insert("INSERT INTO tb_blogtype VALUES(null, #{name}, #{orderNo}, 0)")
     Integer add(BlogType blogType);
 
 
-    @Update("UPDATE tb_blogtype SET blogtype_name=#{name}, blogtype_orderNo=#{orderNo}, WHERE blogtype_id=#{id}")
+    @Update("UPDATE tb_blogtype SET blogtype_name=#{name}, blogtype_orderno=#{orderNo} WHERE blogtype_id=#{id}")
     Integer update(BlogType blogType);
 
 

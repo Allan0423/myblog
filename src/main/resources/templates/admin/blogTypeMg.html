@@ -72,10 +72,9 @@
             $.messager.confirm("系统提示","您确定要删除这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
                 if(r){
                     $.post("/admin/blogType/delete",{ids:ids},function(result){
-                        let delResult=eval('('+result+')');
-                        if(delResult.success){
-                            if(delResult.protected){
-                                $.messager.alert("系统提示",result.protected);
+                        if(result.success){
+                            if(result.protected){
+                                $.messager.alert("系统提示", result.protected);
                             }else{
                                 $.messager.alert("系统提示","数据已成功删除！");
                             }
