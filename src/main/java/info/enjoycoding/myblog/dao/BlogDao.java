@@ -13,6 +13,9 @@ public interface BlogDao {
     @Select("SELECT * FROM tb_blog")
     List<Blog> list();
 
+    @Select("SELECT COUNT(*) FROM tb_blog")
+    Integer getCount();
+
     @Select("SELECT * FROM tb_blog WHERE blog_id=#{id}")
     Blog findById(Integer id);
 
