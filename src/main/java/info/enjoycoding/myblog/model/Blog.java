@@ -40,9 +40,9 @@ public class Blog {
     Integer readCount;
 
     /**
-     * 发布时间
+     * 发布时间，整形的秒数表示
      */
-    String releaseDate;
+    Integer releaseTime;
 
     public Integer getId() {
         return id;
@@ -100,11 +100,11 @@ public class Blog {
         this.readCount = readCount;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
+    public Integer getReleaseTime() {
+        return releaseTime;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setReleaseTime(Integer releaseTime) {
+        this.releaseTime = releaseTime;
     }
 }

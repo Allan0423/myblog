@@ -1,0 +1,29 @@
+package info.enjoycoding.myblog.dao;
+
+import info.enjoycoding.myblog.model.Blog;
+import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Mapper
+@Component
+public interface BlogDao {
+
+    @Select("SELECT * FROM tb_blog")
+    List<Blog> list();
+
+    @Select("SELECT * FROM tb_blog WHERE blog_id=#{id}")
+    Blog findById(Integer id);
+
+    @Insert("INSERT INTO tb_blog VALUES (null, #{title}, #{blogTypeId}, #{digest}, #{keywords}, #{content}, #{releaseTime}, #{readCount})")
+    Integer add(Blog blog);
+
+    @Update("UPDATE tb_blog SET " +
+            "blog_title=#{title}, blog_type_id=#{blogTypeId}, blog_digest=#{digest}, blog_keywords=#{keywords}, " +
+            "blog_content=#{content}, blog_release_date=#{releaseTime}, blog_read_count=#{readCount}")
+    Integer update(Blog blog);
+
+    @Delete("DELETE FROM tb_blog WHERE blog_id=#{id}")
+    Integer delete(Integer id);
+}
