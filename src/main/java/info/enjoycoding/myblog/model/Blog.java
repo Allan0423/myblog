@@ -39,6 +39,11 @@ public class Blog {
      */
     Integer readCount;
 
+    /**
+     * 发布时间
+     */
+    String releaseDate;
+
     public Integer getId() {
         return id;
     }
@@ -93,5 +98,13 @@ public class Blog {
 
     public void setReadCount(Integer readCount) {
         this.readCount = readCount;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 }
