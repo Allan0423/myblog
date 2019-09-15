@@ -1,5 +1,7 @@
 package info.enjoycoding.myblog.model;
 
+import java.util.Date;
+
 /**
  * 博客模型
  */
@@ -42,7 +44,7 @@ public class Blog {
     /**
      * 发布时间，整形的秒数表示
      */
-    Integer releaseTime;
+    Date releaseTime;
 
     public Integer getId() {
         return id;
@@ -100,11 +102,11 @@ public class Blog {
         this.readCount = readCount;
     }
 
-    public Integer getReleaseTime() {
+    public Date getReleaseTime() {
         return releaseTime;
     }
 
-    public void setReleaseTime(Integer releaseTime) {
+    public void setReleaseTime(Date releaseTime) {
         this.releaseTime = releaseTime;
     }
 }
