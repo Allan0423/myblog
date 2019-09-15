@@ -32,6 +32,11 @@ public class Blog {
     String content;
 
     /**
+     * 去除网页标记的纯文本内容，用于索引
+     */
+    String contentNoTag;
+
+    /**
      * 关键字，逗号分隔的词组
      */
     String keywords;
@@ -84,6 +89,14 @@ public class Blog {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getContentNoTag() {
+        return contentNoTag;
+    }
+
+    public void setContentNoTag(String contentNoTag) {
+        this.contentNoTag = contentNoTag;
     }
 
     public String getKeywords() {
