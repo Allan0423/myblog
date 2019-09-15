@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE-edge" charset="UTF-8">
     <title>博客管理</title>
@@ -9,24 +9,24 @@
     <script type="text/javascript" src="/static/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/static/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript">
-
-        function formatBlogType(val,row){
+        function formatBlogType(val, row){
             return val.name;
         }
 
         function formatTitle(val,row){
-            return "<a target='_blank' href='/blog/articles/"+row.id+".html'>"+val+"</a>"
+            return "<a target='_blank' href='/blog/articles/" + row.id + ".html'>" + val + "</a>"
         }
 
+        let dataGrid = $("#dg");
         function searchBlog(){
-            $("#dg").datagrid('load',{
+            dataGrid.datagrid('load', {
                 "title":$("#s_title").val()
             });
         }
 
         function deleteBlog(){
-            var selectedRows=$("#dg").datagrid("getSelections");
-            if(selectedRows.length==0){
+            let selectedRows = dateGrid.datagrid("getSelections");
+            if(selectedRows.length === 0){
                 $.messager.alert("系统提示","请选择要删除的数据！");
                 return;
             }
@@ -34,13 +34,13 @@
             for(var i=0;i<selectedRows.length;i++){
                 strIds.push(selectedRows[i].id);
             }
-            var ids=strIds.join(",");
+            let ids = strIds.join(",");
             $.messager.confirm("系统提示","您确定要删除这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
                 if(r){
                     $.post("/admin/blog/delete",{ids:ids},function(result){
                         if(result.success){
-                            $.messager.alert("系统提示","数据已成功删除！");
-                            $("#dg").datagrid("reload");
+                            $.messager.alert("系统提示", "数据已成功删除！");
+                            dataGrid.datagrid("reload");
                         }else{
                             $.messager.alert("系统提示","数据删除失败！");
                         }
@@ -50,13 +50,13 @@
         }
 
         function openBlogModifyTab(){
-            let selectedRows=$("#dg").datagrid("getSelections");
-            if(selectedRows.length!=1){
-                $.messager.alert("系统提示","请选择一个要修改的博客！");
+            let selectedRows = dataGrid.datagrid("getSelections");
+            if(selectedRows.length != 1){
+                $.messager.alert("系统提示", "请选择一个要修改的博客！");
                 return;
             }
-            let row=selectedRows[0];
-            window.parent.openTab('修改博客','modifyBlog?id='+row.id,'icon-writeblog');
+            let row = selectedRows[0];
+            window.parent.openTab('修改博客','modifyBlog?id=' + row.id, 'icon-writeblog');
         }
     </script>
 </head>
@@ -80,7 +80,7 @@
         <a href="javascript:deleteBlog()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
     </div>
     <div>
-        &nbsp;标题：&nbsp;<input type="text" id="s_title" size="20" onkeydown="if(event.keyCode==13) searchBlog()"/>
+        &nbsp;标题：&nbsp;<input type="text" id="s_title" size="20" onkeydown="if(event.keyCode===13) searchBlog()"/>
         <a href="javascript:searchBlog()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
     </div>
 </div>
