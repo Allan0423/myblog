@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Component
@@ -16,10 +17,11 @@ public interface LinkDao {
             @Result(property = "url", column = "link_url"),
             @Result(property = "orderNo", column = "link_order_no")
     })
-    @Select("SELECT * FROM tb_link")
-    List<Link> list();
+    @Select("<script> SELECT * FROM tb_link " +
+            "<if test=\"#{map.start} != null\"> LIMIT #{map.start}, #{map.size}</if> </script>")
+    List<Link> list(Map map);
 
-    @Select("SELECT COUNT(*) FROM tb_blog")
+    @Select("SELECT COUNT(*) FROM tb_link")
     Integer getCount();
 
     @Insert("INSERT INTO tb_link VALUES (null, #{name}, #{url}, #{orderNo})")

@@ -42,7 +42,7 @@ public class InitComponent implements ServletContextListener {
 
         // 加载友链
         ILinkService linkService = (ILinkService) applicationContext.getBean("linkSvc");
-        List<Link> links = linkService.list();
+        List<Link> links = linkService.list(null);
         context.setAttribute("linkList", links);
 
         // 加载博客类别与数量

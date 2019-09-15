@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service("linkSvc")
 public class LinkServiceImpl implements ILinkService {
@@ -15,8 +16,13 @@ public class LinkServiceImpl implements ILinkService {
     LinkDao linkDao;
 
     @Override
-    public List<Link> list() {
-        return linkDao.list();
+    public List<Link> list(Map map) {
+        return linkDao.list(map);
+    }
+
+    @Override
+    public Integer getCount(){
+        return linkDao.getCount();
     }
 
     @Override

@@ -46,7 +46,7 @@ public class SysAdminController {
         blogger.setPwd(null);
 
         context.setAttribute("blogger", blogger);
-        List<Link> linkList = linkService.list();
+        List<Link> linkList = linkService.list(null);
         context.setAttribute("linkList", linkList);
 
         List<BlogType> blogTypeCountList = blogTypeService.countAll();
