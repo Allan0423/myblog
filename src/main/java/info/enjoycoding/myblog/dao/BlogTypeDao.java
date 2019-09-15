@@ -11,15 +11,16 @@ import java.util.Map;
 @Component
 public interface BlogTypeDao {
 
+    @ResultMap("blogType")
     @Select("SELECT t1.blogtype_id, t1.blogtype_name, COUNT(t2.blog_id) AS blogCount " +
             "FROM tb_blogtype t1 " +
-            "    LEFT JOIN tb_blog t2 ON t1.blogtype_id = t2.blog_typeid " +
+            "    LEFT JOIN tb_blog t2 ON t1.blogtype_id = t2.blog_type " +
             "    GROUP BY t1.blogtype_name " +
             "    ORDER BY t1.blogtype_orderno")
     List<BlogType> countAll();
 
 
-    @Results({
+    @Results(id = "blogType", value = {
             @Result(property = "id", column = "blogtype_id"),
             @Result(property = "name", column = "blogtype_name"),
             @Result(property = "orderNo", column = "blogtype_orderno"),
