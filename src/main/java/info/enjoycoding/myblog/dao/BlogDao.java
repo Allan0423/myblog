@@ -16,6 +16,14 @@ public interface BlogDao {
     @Select("SELECT COUNT(*) FROM tb_blog")
     Integer getCount();
 
+    @Select("SELECT " +
+                "STRFTIME('%Y年%m月', blog_create_time) AS releaseDateStr," +
+                "COUNT(*) AS blogCount " +
+            "FROM tb_blog " +
+            "GROUP BY STRFTIME('%Y年%m月', blog_create_time) " +
+            "ORDER BY STRFTIME('%Y年%m月', blog_create_time) DESC")
+    List<Blog> countList();
+
     @Select("SELECT * FROM tb_blog WHERE blog_id=#{id}")
     Blog findById(Integer id);
 
@@ -24,7 +32,7 @@ public interface BlogDao {
 
     @Update("UPDATE tb_blog SET " +
             "blog_title=#{title}, blog_type_id=#{blogTypeId}, blog_digest=#{digest}, blog_keywords=#{keywords}, " +
-            "blog_content=#{content}, blog_release_date=#{releaseTime}, blog_read_count=#{readCount}")
+            "blog_content=#{content}, blog_release_date=#{releaseTime}, blog_read_count=#{readCount} WHERE blog_id=#{id}")
     Integer update(Blog blog);
 
     @Delete("DELETE FROM tb_blog WHERE blog_id=#{id}")
