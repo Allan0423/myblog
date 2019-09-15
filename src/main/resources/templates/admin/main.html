@@ -15,7 +15,7 @@
         function openTab(text, url, iconCls) {
             let tabs = $("#tabs");
             if(tabs.tabs("exists", text)){
-                $("#tabs").tabs("select", text);
+                tabs.tabs("select", text);
             }else{
                 let content="<iframe frameborder=0 scrolling='auto' style='width:100%; height:100%' src='"+url+"'></iframe>";
                 tabs.tabs("add", {
@@ -26,32 +26,68 @@
                 });
             }
         }
-
+        let dlg = $("#dlg");
+        let url;
         // 打开更新密码对话框
         function openPwdModifyDialog(){
-            $("#dlg").dialog("open").dialog("setTitle", "修改密码");
+            dlg.dialog("open").dialog("setTitle", "修改密码");
+            url = "/admin/blogger/updatePwd";
         }
 
         // 更新密码
         function modifyPwd() {
-
+            $("fm").form("submit", {
+               url:url,
+               onSubmit:function () {
+                   let newPwd = $("#newPwd").val();
+                   let newPwd2 = $("#newPwd2").val();
+                   if (!$(this).form("validate")){
+                       return false;
+                   }
+                   if (newPwd != newPwd2){
+                       alert("系统提示", "两次密码输入不一致，请检查！")
+                       return false;
+                   }
+                   return true;
+               },
+               success:function (result) {
+                   let updateResult = eval('(' + result + ')');
+                   if (updateResult.success){
+                       alert("系统提示", "修改密码成功，下一次登录生效！")
+                       resetValue();
+                       dlg.dialog("close");
+                   } else {
+                       alert("系统提示", "密码修改失败!")
+                   }
+               }
+            });
         }
 
         // 关闭更新密码对话框
         function closePwdModifyDialog() {
             resetValue();
-            $("#dlg").dialog("close");
+            dlg.dialog("close");
         }
 
         // 重置输入数据
         function resetValue() {
-            $("#newPassword").val("");
-            $("#newPassword2").val("");
+            $("#newPwd").val("");
+            $("#newPwd2").val("");
         }
 
         // 刷新系统缓存
         function refreshSystem() {
+            $.post("/admin/system/refreshSystem", {}, function (result) {
+                if (result.success){
+                    alert("系统提示", "已成功刷新系统缓存！")
+                } else {
+                    alert("系统提示", "刷新系统缓存失败！");
+                }
+            }, "json");
+        }
 
+        function alert(message) {
+            $.messager.alert(message);
         }
 
         // 博主退出登录
@@ -129,13 +165,13 @@
             <tr>
                 <td>新密码：</td>
                 <td>
-                    <input type="password" id="newPassword" name="newPassword" class="easyui-validatebox" required="true" style="width: 200px"/>
+                    <input type="password" id="newPwd" name="newPwd" class="easyui-validatebox" required="true" style="width: 200px"/>
                 </td>
             </tr>
             <tr>
                 <td>确认新密码：</td>
                 <td>
-                    <input type="password" id="newPassword2" name="newPassword2" class="easyui-validatebox" required="true" style="width: 200px"/>
+                    <input type="password" id="newPwd2" name="newPwd2" class="easyui-validatebox" required="true" style="width: 200px"/>
                 </td>
             </tr>
         </table>
