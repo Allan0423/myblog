@@ -11,4 +11,6 @@ public interface IBloggerService {
     Integer updatePwd(Blogger blogger);
 
     Integer updateInfo(Blogger blogger);
+
+    Blogger findBlogger();
 }

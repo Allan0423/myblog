@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-@Service
+@Service("bloggerSvc")
 public class BloggerServiceImpl implements IBloggerService {
 
     @Resource
@@ -27,5 +27,10 @@ public class BloggerServiceImpl implements IBloggerService {
     @Override
     public Integer updateInfo(Blogger blogger) {
         return bloggerDao.updateBloggerInfo(blogger);
+    }
+
+    @Override
+    public Blogger findBlogger() {
+        return bloggerDao.findBlogger();
     }
 }

@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Service("blogTypeSvc")
 public class BlogTypeServiceImpl implements IBlogTypeService {
 
     @Resource

@@ -11,6 +11,8 @@ public interface IBlogService {
 
     Integer getCount(Map<String, Object> map);
 
+    List<Blog> countList();
+
     Blog findById(Integer id);
 
     Integer addBlog(Blog blog);
