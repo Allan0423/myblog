@@ -10,7 +10,8 @@ import java.util.List;
 @Component
 public interface BlogDao {
 
-    @Select("SELECT * FROM tb_blog")
+    @Select("<script> SELECT * FROM tb_blog " +
+            "<if test=\"#{map.start} != null\"> LIMIT #{map.start}, #{map.size}</if> </script>")
     List<Blog> list();
 
     @Select("SELECT COUNT(*) FROM tb_blog")

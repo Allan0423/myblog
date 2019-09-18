@@ -16,25 +16,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static info.enjoycoding.myblog.constant.WebConstants.*;
+
 @Controller
 @RequestMapping("/admin/blogType")
 public class BlogTypeAdminController {
 
     @Resource
     private IBlogTypeService blogTypeService;
-
-    private static final String KEY_START = "start";
-
-    private static final String KEY_SIZE = "size";
-
-    private static final String KEY_ROWS = "rows";
-
-    private static final String KEY_TOTAL = "total";
-
-    private static final String KEY_SUCCESS = "success";
-
-    private static final String KEY_PROTECTED = "protected";
-
 
     @RequestMapping("/list")
     public void list(@RequestParam(value="page", required=false)String page,

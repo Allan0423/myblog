@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface IBlogService {
 
-    List<Blog> list();
+    List<Blog> list(Map map);
 
     Integer getCount(Map<String, Object> map);
 
@@ -15,9 +15,9 @@ public interface IBlogService {
 
     Blog findById(Integer id);
 
-    Integer addBlog(Blog blog);
+    Integer add(Blog blog);
 
-    Integer updateBlog(Blog blog);
+    Integer update(Blog blog);
 
-    Integer deleteBlog(Integer id);
+    Integer delete(Integer id);
 }
