@@ -25,9 +25,9 @@
         }
 
         function deleteBlog(){
-            let selectedRows = dateGrid.datagrid("getSelections");
+            let selectedRows = dataGrid.datagrid("getSelections");
             if(selectedRows.length === 0){
-                $.messager.alert("系统提示","请选择要删除的数据！");
+                $.messager.alert("系统提示","请选择要删除的博客！");
                 return;
             }
             var strIds=[];
@@ -39,10 +39,10 @@
                 if(r){
                     $.post("/admin/blog/delete",{ids:ids},function(result){
                         if(result.success){
-                            $.messager.alert("系统提示", "数据已成功删除！");
+                            $.messager.alert("系统提示", "博客已成功删除！");
                             dataGrid.datagrid("reload");
                         }else{
-                            $.messager.alert("系统提示","数据删除失败！");
+                            $.messager.alert("系统提示","博客删除失败！");
                         }
                     },"json");
                 }
