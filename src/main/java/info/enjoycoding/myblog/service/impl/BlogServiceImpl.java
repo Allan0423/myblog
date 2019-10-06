@@ -16,7 +16,7 @@ public class BlogServiceImpl implements IBlogService {
     private BlogDao blogDao;
 
     @Override
-    public List<Blog> list() {
+    public List<Blog> list(Map map) {
         return blogDao.list();
     }
 
@@ -36,17 +36,17 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
-    public Integer addBlog(Blog blog) {
+    public Integer add(Blog blog) {
         return blogDao.add(blog);
     }
 
     @Override
-    public Integer updateBlog(Blog blog) {
+    public Integer update(Blog blog) {
         return blogDao.update(blog);
     }
 
     @Override
-    public Integer deleteBlog(Integer id) {
+    public Integer delete(Integer id) {
         return blogDao.delete(id);
     }
 }
